@@ -3,6 +3,11 @@ import java.util.List;
 
 public class ParkingBoy {
     private List<ParkingLot> parks = new ArrayList<ParkingLot>();
+
+    public List<ParkingLot> getParks() {
+        return parks;
+    }
+
     public ParkingBoy manageLot(ParkingLot lot) {
         parks.add(lot);
         return this;
