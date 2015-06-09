@@ -4,20 +4,19 @@ public class ParkingLot {
     private boolean isFull;
     private HashMap<String, Car> cars = new HashMap<String, Car>();
     private int availableLots = 0;
+    private int total;
 
-    public ParkingLot(int available) {
+    public ParkingLot(int available, int total) {
         this.availableLots = available;
-    }
-
-    public ParkingLot() {
+        this.total = total;
     }
 
     public boolean canPark() {
         return !isFull;
     }
 
-    public void isFull(boolean full) {
-        this.isFull = full;
+    public void isFull() {
+        isFull = this.availableLots <= this.total;
     }
 
     public void park(Car car) {
@@ -36,5 +35,9 @@ public class ParkingLot {
 
     public int getAvailableLots() {
         return availableLots;
+    }
+
+    public int getTotal() {
+        return total;
     }
 }

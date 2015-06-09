@@ -11,7 +11,7 @@ public class ParkingLotTest {
 
     @Before
     public void setUp() throws Exception {
-        parkingLot = new ParkingLot();
+        parkingLot = new ParkingLot(2, 5);
         car = new Car("1");
     }
 
@@ -22,7 +22,7 @@ public class ParkingLotTest {
 
     @Test
     public void couldNotParkingIfFull(){
-        parkingLot.isFull(true);
+        parkingLot.isFull();
         assertThat(parkingLot.canPark(), is(false));
     }
 

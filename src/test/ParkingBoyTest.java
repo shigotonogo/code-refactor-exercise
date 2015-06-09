@@ -16,15 +16,15 @@ public class ParkingBoyTest {
 
     @Before
     public void setUp() throws Exception {
-        lot1 = new ParkingLot();
-        lot2 = new ParkingLot();
+        lot1 = new ParkingLot(2, 5);
+        lot2 = new ParkingLot(3, 5);
         car = new Car("1");
     }
 
     @Test
     public void testBoyCanParkCarToTheNotFullLot() throws Exception {
         ParkingBoy parkingBoy = new ParkingBoy();
-        lot1.isFull(true);
+        lot1.isFull();
         parkingBoy.manageLot(lot1).manageLot(lot2);
 
         ParkingLot park = parkingBoy.park(car);
@@ -45,8 +45,8 @@ public class ParkingBoyTest {
     @Test
     public void testBoyCannotParkCarWhenAllLotsCannotPark() throws Exception {
         ParkingBoy parkingBoy = new ParkingBoy();
-        lot1.isFull(true);
-        lot2.isFull(true);
+        lot1.isFull();
+        lot2.isFull();
         parkingBoy.manageLot(lot1).manageLot(lot2);
 
         ParkingLot park = parkingBoy.park(car);

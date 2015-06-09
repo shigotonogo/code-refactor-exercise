@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ParkingBoy {
     private List<ParkingLot> parks = new ArrayList<ParkingLot>();
@@ -14,12 +15,15 @@ public class ParkingBoy {
     }
 
     public ParkingLot park(Car car) {
-        for (ParkingLot park : parks) {
-            if (park.canPark()) {
-                park.park(car);
-                return park;
-            }
+        Optional<ParkingLot> parkingLot = getParkingLot();
+        if (parkingLot.isPresent()) {
+            parkingLot.get().park(car);
+            return parkingLot.get();
         }
         return null;
+    }
+
+    public Optional<ParkingLot> getParkingLot() {
+        return parks.stream().filter(park -> park.canPark()).findFirst();
     }
 }

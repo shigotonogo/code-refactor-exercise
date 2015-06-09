@@ -3,11 +3,13 @@ import org.junit.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-public class SmartParkingBoyTest {
-
+/**
+ * Created by ywdong on 6/9/15.
+ */
+public class BrilliantParkingBoyTest {
     @Test
     public void shouldParkingCarToTheLotWithMostAvailableLots(){
-        SmartParkingBoy boy = new SmartParkingBoy();
+        BrilliantParkingBoy boy = new BrilliantParkingBoy();
         ParkingLot lot1 = new ParkingLot(2, 5);
         ParkingLot lot2 = new ParkingLot(3, 5);
         ParkingLot lot3 = new ParkingLot(1, 5);
