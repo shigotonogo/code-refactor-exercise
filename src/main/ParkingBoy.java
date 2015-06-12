@@ -5,6 +5,9 @@ import java.util.Optional;
 public class ParkingBoy implements Parkable {
     private List<ParkingLot> parks = new ArrayList<ParkingLot>();
 
+    public ParkingBoy(String name) {
+    }
+
     public List<ParkingLot> getParks() {
         return parks;
     }

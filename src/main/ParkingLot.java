@@ -6,7 +6,7 @@ public class ParkingLot implements Parkable {
     private int availableLots = 0;
     private int total;
 
-    public ParkingLot(int available, int total) {
+    public ParkingLot(String name, int total, int available) {
         this.availableLots = available;
         this.total = total;
         this.isFull = this.availableLots == 0;

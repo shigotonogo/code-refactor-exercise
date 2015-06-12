@@ -3,9 +3,11 @@ import java.util.stream.Stream;
 
 public class ParkingManager implements Parkable {
     private Parkable[] parkables;
+    private String name;
 
-    public ParkingManager(Parkable... parkables) {
+    public ParkingManager(String name, Parkable... parkables) {
         this.parkables = parkables;
+        this.name = name;
     }
 
     @Override
@@ -31,6 +33,11 @@ public class ParkingManager implements Parkable {
                 return got;
             }
         }
+        return null;
+    }
+
+    public String report() {
+
         return null;
     }
 }

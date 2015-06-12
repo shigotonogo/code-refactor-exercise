@@ -15,11 +15,11 @@ public class ParkingManagerTest {
 
     @Before
     public void setUp() throws Exception {
-        boy = new ParkingBoy();
-        lot1 = new ParkingLot(1, 5);
+        boy = new ParkingBoy("");
+        lot1 = new ParkingLot("", 5, 1);
         boy.manageLot(lot1);
-        lot = new ParkingLot(0, 5);
-        parkingManager = new ParkingManager(boy, lot);
+        lot = new ParkingLot("", 5, 0);
+        parkingManager = new ParkingManager("", boy, lot);
         car = new Car("1");
     }
 
@@ -33,11 +33,26 @@ public class ParkingManagerTest {
 
     @Test
     public void testCanPark() throws Exception {
-        lot = new ParkingLot(1, 5);
-        parkingManager = new ParkingManager(boy, lot);
+        lot = new ParkingLot("", 5, 1);
+        parkingManager = new ParkingManager("", boy, lot);
         parkingManager.park(car);
 
         assertThat(lot1.getCar(car).getId(), is(car.getId()));
         assertThat(lot.getCar(car), is(nullValue()));
+    }
+
+    @Test
+    public void testPrintParkingLots() throws Exception {
+        boy = new ParkingBoy("lisi");
+        boy.manageLot(new ParkingLot("parking lot 1", 5, 1));
+        parkingManager = new ParkingManager("zhangsan", boy, new ParkingLot("parking lot 2", 5, 0));
+
+        String report = parkingManager.report();
+        assertThat(report, is(
+                "ParkingManager - zhangsan\\n"+
+                "    ParkingBoy - lisi\\n"+
+                "        ParkingLot - parking lot 1\\n"+
+                "    ParkingLot - parking lot 2"
+        ));
     }
 }

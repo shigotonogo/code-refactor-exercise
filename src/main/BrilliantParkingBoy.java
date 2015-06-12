@@ -3,8 +3,8 @@ import java.util.Optional;
 import static java.util.Comparator.comparingDouble;
 
 public class BrilliantParkingBoy extends ParkingBoy {
-    public BrilliantParkingBoy() {
-        super();
+    public BrilliantParkingBoy(String name) {
+        super(name);
     }
 
     @Override

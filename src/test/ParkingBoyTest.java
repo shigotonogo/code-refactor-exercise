@@ -5,9 +5,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-/**
- * Created by ywdong on 6/9/15.
- */
 public class ParkingBoyTest {
 
     private ParkingLot lot1;
@@ -16,15 +13,15 @@ public class ParkingBoyTest {
 
     @Before
     public void setUp() throws Exception {
-        lot1 = new ParkingLot(2, 5);
-        lot2 = new ParkingLot(3, 5);
+        lot1 = new ParkingLot("", 5, 2);
+        lot2 = new ParkingLot("", 5, 3);
         car = new Car("1");
     }
 
     @Test
     public void testBoyCanParkCarToTheNotFullLot() throws Exception {
-        ParkingBoy parkingBoy = new ParkingBoy();
-        lot1 = new ParkingLot(0, 5);
+        ParkingBoy parkingBoy = new ParkingBoy("");
+        lot1 = new ParkingLot("", 5, 0);
         parkingBoy.manageLot(lot1).manageLot(lot2);
 
         ParkingLot park = parkingBoy.park(car);
@@ -34,7 +31,7 @@ public class ParkingBoyTest {
 
     @Test
     public void testBoyCanParkCarToTheFirstLotWhenAllLotsCanPark() throws Exception {
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingBoy parkingBoy = new ParkingBoy("");
         parkingBoy.manageLot(lot1).manageLot(lot2);
 
         ParkingLot park = parkingBoy.park(car);
@@ -44,9 +41,9 @@ public class ParkingBoyTest {
 
     @Test
     public void testBoyCannotParkCarWhenAllLotsCannotPark() throws Exception {
-        ParkingBoy parkingBoy = new ParkingBoy();
-        lot1 = new ParkingLot(0, 5);
-        lot2 = new ParkingLot(0, 5);
+        ParkingBoy parkingBoy = new ParkingBoy("");
+        lot1 = new ParkingLot("", 5, 0);
+        lot2 = new ParkingLot("", 5, 0);
         parkingBoy.manageLot(lot1).manageLot(lot2);
 
         ParkingLot park = parkingBoy.park(car);
@@ -56,7 +53,7 @@ public class ParkingBoyTest {
 
     @Test
     public void testBoyCanGetCar() throws Exception {
-        ParkingBoy parkingBoy = new ParkingBoy();
+        ParkingBoy parkingBoy = new ParkingBoy("");
         parkingBoy.manageLot(lot1).manageLot(lot2);
 
         parkingBoy.park(car);
