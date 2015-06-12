@@ -41,18 +41,4 @@ public class ParkingManagerTest {
         assertThat(lot.getCar(car), is(nullValue()));
     }
 
-    @Test
-    public void testPrintParkingLots() throws Exception {
-        boy = new ParkingBoy("lisi");
-        boy.manageLot(new ParkingLot("parking lot 1", 5, 1));
-        parkingManager = new ParkingManager("zhangsan", boy, new ParkingLot("parking lot 2", 5, 0));
-
-        String report = parkingManager.report();
-        assertThat(report, is(
-                "ParkingManager - zhangsan\\n"+
-                "    ParkingBoy - lisi\\n"+
-                "        ParkingLot - parking lot 1\\n"+
-                "    ParkingLot - parking lot 2"
-        ));
-    }
 }

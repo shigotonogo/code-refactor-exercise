@@ -1,4 +1,4 @@
-public interface Parkable {
+public interface Parkable extends Nameable {
     ParkingLot park(Car car);
 
     boolean canPark();

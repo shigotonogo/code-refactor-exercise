@@ -4,18 +4,26 @@ import java.util.Optional;
 
 public class ParkingBoy implements Parkable {
     private List<ParkingLot> parks = new ArrayList<ParkingLot>();
+    private String name;
 
     public ParkingBoy(String name) {
+        this.name = name;
     }
 
     public List<ParkingLot> getParks() {
         return parks;
     }
 
+
+    public String getName() {
+        return name;
+    }
+
     public ParkingBoy manageLot(ParkingLot lot) {
         parks.add(lot);
         return this;
     }
+
 
     @Override
     public ParkingLot park(Car car) {

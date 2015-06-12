@@ -3,13 +3,19 @@ import java.util.HashMap;
 public class ParkingLot implements Parkable {
     private boolean isFull;
     private HashMap<String, Car> cars = new HashMap<>();
+    private String name;
     private int availableLots = 0;
     private int total;
 
     public ParkingLot(String name, int total, int available) {
+        this.name = name;
         this.availableLots = available;
         this.total = total;
         this.isFull = this.availableLots == 0;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public boolean canPark() {

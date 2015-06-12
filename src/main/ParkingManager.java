@@ -1,3 +1,4 @@
+import java.io.PrintStream;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -20,6 +21,14 @@ public class ParkingManager implements Parkable {
         return null;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Parkable[] getParkables() {
+        return parkables;
+    }
+
     @Override
     public boolean canPark() {
         return Stream.of(parkables).anyMatch(Parkable::canPark);
@@ -36,8 +45,17 @@ public class ParkingManager implements Parkable {
         return null;
     }
 
-    public String report() {
+    public void report(PrintStream out) {
+        String report = new Reporter().report(this);
+        out.println(report);
+    }
 
-        return null;
+    public static void main(String[] args) {
+        ParkingBoy boy = new ParkingBoy("lisi");
+        boy.manageLot(new ParkingLot("parking lot 1", 5, 1));
+        boy.manageLot(new ParkingLot("parking lot 3", 5, 1));
+        boy.manageLot(new ParkingLot("parking lot 4", 5, 1));
+        ParkingManager parkingManager = new ParkingManager("zhangsan", boy, new ParkingLot("parking lot 2", 5, 0));
+        parkingManager.report(System.out);
     }
 }
