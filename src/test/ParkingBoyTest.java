@@ -53,4 +53,13 @@ public class ParkingBoyTest {
 
         assertThat(park, is(nullValue()));
     }
+
+    @Test
+    public void testBoyCanGetCar() throws Exception {
+        ParkingBoy parkingBoy = new ParkingBoy();
+        parkingBoy.manageLot(lot1).manageLot(lot2);
+
+        parkingBoy.park(car);
+        assertThat(parkingBoy.getCar(car).getId(), is(car.getId()));
+    }
 }

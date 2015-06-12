@@ -1,8 +1,8 @@
 import java.util.HashMap;
 
-public class ParkingLot {
+public class ParkingLot implements Parkable {
     private boolean isFull;
-    private HashMap<String, Car> cars = new HashMap<String, Car>();
+    private HashMap<String, Car> cars = new HashMap<>();
     private int availableLots = 0;
     private int total;
 
@@ -16,22 +16,28 @@ public class ParkingLot {
         return !isFull;
     }
 
-    public void park(Car car) {
+    public ParkingLot park(Car car) {
         cars.put(car.getId(), car);
         this.availableLots--;
+        return this;
     }
 
     public Car getCar(Car car) {
-        Car gettedCar = cars.get(car.getId());
-        if (gettedCar != null) {
+        Car gotCar = cars.get(car.getId());
+        if (gotCar != null) {
             this.availableLots++;
-            return gettedCar;
+            return gotCar;
         }
         return null;
     }
 
     public int getAvailableLots() {
         return availableLots;
+    }
+
+    public double getUtilizationRate() {
+
+        return (getTotal() - getAvailableLots()) * 1.0f / getTotal();
     }
 
     public int getTotal() {
