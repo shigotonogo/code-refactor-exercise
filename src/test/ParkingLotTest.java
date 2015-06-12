@@ -21,13 +21,13 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void couldNotParkingIfFull(){
-        parkingLot.isFull();
+    public void couldNotParkingIfFull() {
+        parkingLot = new ParkingLot(0, 5);
         assertThat(parkingLot.canPark(), is(false));
     }
 
     @Test
-    public void getCarWhenCarIsInLot(){
+    public void getCarWhenCarIsInLot() {
         parkingLot.park(car);
 
         assertThat(parkingLot.getCar(car), is(car));

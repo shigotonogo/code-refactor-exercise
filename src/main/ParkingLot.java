@@ -9,14 +9,11 @@ public class ParkingLot {
     public ParkingLot(int available, int total) {
         this.availableLots = available;
         this.total = total;
+        this.isFull = this.availableLots == 0;
     }
 
     public boolean canPark() {
         return !isFull;
-    }
-
-    public void isFull() {
-        isFull = this.availableLots <= this.total;
     }
 
     public void park(Car car) {

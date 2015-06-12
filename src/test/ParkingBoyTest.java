@@ -24,7 +24,7 @@ public class ParkingBoyTest {
     @Test
     public void testBoyCanParkCarToTheNotFullLot() throws Exception {
         ParkingBoy parkingBoy = new ParkingBoy();
-        lot1.isFull();
+        lot1 = new ParkingLot(0, 5);
         parkingBoy.manageLot(lot1).manageLot(lot2);
 
         ParkingLot park = parkingBoy.park(car);
@@ -45,8 +45,8 @@ public class ParkingBoyTest {
     @Test
     public void testBoyCannotParkCarWhenAllLotsCannotPark() throws Exception {
         ParkingBoy parkingBoy = new ParkingBoy();
-        lot1.isFull();
-        lot2.isFull();
+        lot1 = new ParkingLot(0, 5);
+        lot2 = new ParkingLot(0, 5);
         parkingBoy.manageLot(lot1).manageLot(lot2);
 
         ParkingLot park = parkingBoy.park(car);
